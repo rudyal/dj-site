@@ -65,3 +65,14 @@ def ViewPicOb(request):
         }
 
         return render(request, 'polls/demo2.html', pic_data)
+
+def Viewer(request):
+        # put id from picture into url
+
+        # figure out how to retreive picture based on ID and put it into page
+
+        # also figure out how to make template that is re-usable for ID's
+
+        # Put href in pics on front page
+
+        return render(request, 'polls/demo2.html', pic_data)

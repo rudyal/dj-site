@@ -2,12 +2,13 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from polls.api import PicResource, UserResource
+from polls.api import PicResource, UserResource, TagResource
 from tastypie.api import Api
 
 v1_api = Api(api_name='v1')
 v1_api.register(UserResource())
 v1_api.register(PicResource())
+v1_api.register(TagResource())
 
 admin.autodiscover()
 

@@ -47,19 +47,6 @@ function getItemElement2(count) {
         var elem = document.createElement('img');
         var picsrc = data.objects[count].picture;
 
-          // Test Code
-          // var item = "";
-          // // item.className = 'is-loading';
-          // var size = Math.random() * 3 + 1;
-          // var width = Math.random() * 110 + 100;
-          // width = Math.round( width * size );
-          // var height = Math.round( 140 * size );
-          // var rando = Math.ceil( Math.random() * 1000 );
-          // var src = rando < 100 ? '//foo/broken-' + rando + '.jpg' :
-          //   // use lorempixel for great random images
-          //   'http://lorempixel.com/' + width + '/' + height + '/' + '?' + rando;
-          // item += '<img class="item "  src="' + src + '" />';
-
           // My way
           // Get image dimensions from 
           // Test if image is appropriate for position

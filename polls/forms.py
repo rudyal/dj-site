@@ -6,7 +6,7 @@ from polls.models import Choice, Poll, PictureObject
 class PictureObjectForm(ModelForm):
 	class Meta:
 		model = PictureObject
-		fields = ('title', 'source', 'text', 'tags1', 'gender', 'date', 'picture')
+		fields = ('title', 'source', 'text', 'tags1', 'gender', 'date', 'picture', 'tags')
 		widgets = {
 			'text': Textarea(attrs={'cols': 80, 'rows': 2}),
 		}
