@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        {% load staticfiles %}
+		<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" /> -->
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/normalize.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/main.css' %}" />
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/reset.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'polls/css/text.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'polls/css/960.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+		<!-- <link rel="stylesheet" type="text/css" href="{% static 'polls/css/demo.css' %}" /> -->
+		<script src="{% static 'polls/js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'polls/js/masonry.pkgd.js' %}"></script>
+		
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <!-- <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script> -->
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="{% static 'polls/js/classie.js' %}"></script>
+
+        <script src="{% static 'polls/js/custom.js' %}"></script>
+        <script>
+        $( document ).ready( function(){
+		    setMaxWidth();
+		    $( window ).bind( "resize", setMaxWidth ); //Remove this if it's not needed. It will react when window changes size.
+
+		    function setMaxWidth() {
+		    $( ".largeCon" ).css( "maxWidth", ( $( window ).width() * 0.95 | 0 ) + "px" );
+		    //$( "body" ).css( "minWidth", ( $( window ).width() * 1 | 0 ) + "px" );
+		    }
+
+		});
+		</script>
+    </head>
+    <body class="cbp-spmenu-push">
+	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<h3><a href="http://www.jqueryscript.net/menu/">Menu</a></h3>
+			<a href="#">Celery seakale</a>
+			<a href="#">Dulse daikon</a>
+			<a href="#">Zucchini garlic</a>
+			<a href="#">Catsear azuki bean</a>
+			<a href="#">Dandelion bunya</a>
+			<a href="#">Rutabaga</a>
+	</nav>
+	<div class="largeCon">
+	
+	<div class="container_12">
+		<div class="sidebar">
+				<button id="showLeft">Filter</button>
+			</div>
+	        <!-- Add your site or application content here -->
+        <br>
+        <div id="logoDiv"><h1>AR Site</h1></div>
+
+        
+		{% if latest_poll_list %}
+		    <ul>
+		    {% for poll in latest_poll_list %}
+		        <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No polls are available.</p>
+		{% endif %}
+
+		<div id="addcontent"><a href="{% url 'polls:CreatePicObModel' %}">Add Content</a>
+		<br>
+		<a href="{% url 'polls:ViewPicOb' %}">View Content</a>
+		</div>
+
+		<p>TODO: Javasrcipt needs to set css(background) of w1,w2, etc by grabbing img links from json file.....also need to make admin form to input pictures, options (pic, link, text, title, source, tagging, auto:date, id, user that submitted) these will save into modles... later they will be pulled and parsed into JSON</p>
+
+		<div id="placeholder"></div>
+		<div id="masonryHolder>">
+			<div class="masonry"  data-masonry-options='{ "isFitWidth": true }'>
+
+			</div>
+		</div>
+	</div>
+	</div>
+
+	
+	<!-- end .container_16 -->
+</body>
+</html>

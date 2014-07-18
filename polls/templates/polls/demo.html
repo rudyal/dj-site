@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>960 Grid System &mdash; Demo</title>
+        {% load staticfiles %}
+    
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/normalize.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/text.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/960.css' %}" />
+</head>
+<body>
+
+<div class="container_12">
+    <h1>Add Content</h1>
+<!-- 
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %} -->
+
+    <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+
+<!--   <table>
+    <tr>
+        <th>title</th>
+        <th>source</th>
+        <th>text</th>
+    </tr>
+    {% for model in query_results %}
+    <tr> 
+        <td>{{ model.title }}</td>
+        <td>{{ model.source }}</td>
+        <td>{{ model.text }}</td>
+    </tr>
+    {% endfor %}
+  </table> -->
+
+
+</div>
+</body>
+</html>

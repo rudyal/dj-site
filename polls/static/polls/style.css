@@ -1,0 +1,216 @@
+/* line 9, style.scss */
+li a {
+  color: white;
+  margin-right: 5px;
+}
+
+/* line 13, style.scss */
+body {
+  background-image: url("img/stardust2.png");
+  background-repeat: repeat;
+}
+@media (max-width: 450px) {
+  /* line 13, style.scss */
+  body {
+    background-image: none;
+    background-color: green;
+  }
+}
+@media (min-width: 450px) and (max-width: 890px) {
+  /* line 13, style.scss */
+  body {
+    background-image: none;
+    background-color: blue;
+  }
+}
+
+/* line 26, style.scss */
+body {
+  font-family: sans-serif;
+}
+
+/* line 29, style.scss */
+.sidebar {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 5%;
+  float: left;
+  height: 40px;
+  display: inline;
+  position: absolute;
+  z-index: 1;
+}
+
+/* line 39, style.scss */
+.largeCon {
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 1000px;
+  max-width: 100% !important;
+  overflow: auto;
+  margin-right: 0px !important;
+}
+
+/* line 48, style.scss */
+#container {
+  border: 1px solid;
+  padding: 5px;
+}
+
+/* line 53, style.scss */
+.container_12 {
+  display: inline;
+  width: 100%;
+  float: right;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* line 62, style.scss */
+#logoDiv {
+  color: white;
+  display: block;
+  font-family: YanoneKaffeesatzThin;
+  font-size: 40px;
+  font-weight: normal;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  text-rendering: optimizelegibility;
+  text-shadow: #333333 1px 1px 1px;
+  width: 585px;
+}
+
+/* line 88, style.scss */
+.item {
+  width: 19%;
+  height: 120px;
+  float: left;
+  margin: 1px;
+  background: #CCC;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  -webkit-transition: width 0.4s, height 0.4s;
+  -moz-transition: width 0.4s, height 0.4s;
+  -o-transition: width 0.4s, height 0.4s;
+  transition: width 0.4s, height 0.4s;
+}
+
+/* line 103, style.scss */
+.item.w2 {
+  width: 250px;
+}
+
+/* line 107, style.scss */
+.item.h2 {
+  height: 230px;
+}
+
+/* line 116, style.scss */
+.masonry .item {
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+/*.masonry .item {
+  height: 140px;
+  min-width: 100px;
+  display: block;
+  float: left;
+}*/
+/* line 141, style.scss */
+button {
+  font-size: 20px;
+}
+
+/* line 145, style.scss */
+#addcontent a {
+  color: white;
+}
+
+/* line 149, style.scss */
+li.is-loading {
+  background-color: black;
+  background-image: url("http://desandro.github.io/imagesloaded/assets/loading.gif");
+}
+
+/* line 156, style.scss */
+.cbp-spmenu {
+  background: #47a3da;
+  position: fixed;
+  width: 10%;
+}
+
+/* line 162, style.scss */
+.cbp-spmenu h3 {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background: #0d77b6;
+}
+
+/* line 170, style.scss */
+.cbp-spmenu a {
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+/* line 176, style.scss */
+.cbp-spmenu a:hover {
+  background: #258ecd;
+}
+
+/* line 179, style.scss */
+.cbp-spmenu a:active {
+  background: #afdefa;
+  color: #47a3da;
+}
+
+/* line 183, style.scss */
+.cbp-spmenu-left {
+  left: -240px;
+}
+
+/* line 186, style.scss */
+.cbp-spmenu-left.cbp-spmenu-open {
+  left: 0px;
+}
+
+/* line 190, style.scss */
+.cbp-spmenu, .cbp-spmenu-push {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* line 195, style.scss */
+.cbp-spmenu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+/* line 201, style.scss */
+.cbp-spmenu-push-toright {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  left: 10%;
+  width: 89% !important;
+  position: relative;
+}
+
+/* line 211, style.scss */
+.cbp-spmenu-push-toleft {
+  left: -240px;
+}

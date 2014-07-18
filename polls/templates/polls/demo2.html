@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>960 Grid System &mdash; Demo</title>
+        {% load staticfiles %}
+    
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/normalize.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/text.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/960.css' %}" />
+</head>
+<body>
+
+<div class="container_12">
+    <h1>View Content</h1>
+
+
+  <table>
+    <tr>
+        <th>title</th>
+        <th>source</th>
+        <th>text</th>
+        <th>tags</th>
+        <th>text</th>
+        <th>text</th>
+        <th>text</th>
+    </tr>
+    {% for detail in pic_detail %}
+    <tr> 
+        <td>{{ detail.title }}</td>
+        <td>{{ detail.source }}</td>
+        <td>{{ detail.text }}</td>
+        <td>{{ detail.tags1 }}</td>
+        <td>{{ detail.gender }}</td>
+        <td>{{ detail.date }}</td>
+        <td>{{ detail.picture }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+
+</div>
+</body>
+</html>

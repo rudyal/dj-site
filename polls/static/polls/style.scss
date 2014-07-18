@@ -1,0 +1,213 @@
+@import "breakpoint";
+@import "compass";
+//hello
+
+$small: max-width 450px;
+$medium: 450px 890px;
+$large: min-width 890px;
+
+li a {
+    color: white;
+    margin-right:5px;
+}
+body {
+  background-image:url('img/stardust2.png');
+	background-repeat:repeat;
+  @include breakpoint($small){
+    background-image: none;
+    background-color:green;
+  }
+  @include breakpoint($medium){
+    background-image: none;
+    background-color:blue;
+  }
+}
+
+body {
+    font-family: sans-serif;
+}
+.sidebar{
+  background-color: rgba(0,0,0,0.6);
+  width: 5%;
+  float: left;
+  height: 40px;
+  display: inline;
+  position: absolute;
+  z-index:1;
+}
+
+.largeCon{
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 1000px;
+    max-width: 100% !important;
+    overflow:auto;
+    margin-right: 0px !important;
+}
+
+#container {
+    border: 1px solid;
+    padding: 5px;
+}
+
+.container_12{
+  display: inline;
+    width: 100%;
+    float: right;
+    background-color: rgba(0,0,0,0.3);
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+#logoDiv{
+	color: rgb(255, 255, 255);
+	display: block;
+	font-family: YanoneKaffeesatzThin;
+	font-size: 40px;
+	font-weight: normal;
+	height: 50px;
+	line-height: 50px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
+	text-rendering: optimizelegibility;
+	text-shadow: rgb(51, 51, 51) 1px 1px 1px;
+	width: 585px;
+}
+
+// .item {
+//     width: 190px;
+//     height: 120px;
+//     float: left;
+//     margin: 1px;
+//     background: #CCC;
+//     cursor: -webkit-zoom-in; 
+//     cursor: -moz-zoom-in;
+// }
+.item {
+  width: 19%;
+    height: 120px;
+    float: left;
+    margin: 1px;
+    background: #CCC;
+    cursor: -webkit-zoom-in; 
+    cursor: -moz-zoom-in;
+    -webkit-transition: width 0.4s, height 0.4s;
+     -moz-transition: width 0.4s, height 0.4s;
+       -o-transition: width 0.4s, height 0.4s;
+          transition: width 0.4s, height 0.4s;
+}
+
+
+.item.w2 {
+    width: 250px;
+}
+
+.item.h2 {
+    height: 230px;
+}
+
+
+.masonry {
+  
+}
+
+.masonry .item {
+  // width:  292px;
+  // height: 292px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+/*.masonry .item {
+  height: 140px;
+  min-width: 100px;
+  display: block;
+  float: left;
+}*/
+
+// .item.w1a { width:  292px;}
+// .item.w2a { width:  444px;}
+// .item.w3a { width:  140px; height: 140px;}
+// .item.w4a { width:  140px; height: 140px;}
+
+// .item.w5a { width:  292px}
+// .item.w6a { width:  292px;}
+// .item.w7a { width:  292px;}
+
+button {
+  font-size: 20px;
+}
+
+#addcontent a{
+  color:white;
+}
+
+li.is-loading {
+  background-color: black;
+  background-image: url('http://desandro.github.io/imagesloaded/assets/loading.gif');
+}
+
+
+
+.cbp-spmenu {
+background: #47a3da;
+position: fixed;
+width:10%;
+
+}
+.cbp-spmenu h3 {
+color: #afdefa;
+font-size: 1.9em;
+padding: 20px;
+margin: 0;
+font-weight: 300;
+background: #0d77b6;
+}
+.cbp-spmenu a {
+display: block;
+color: #fff;
+font-size: 1.1em;
+font-weight: 300;
+}
+.cbp-spmenu a:hover {
+background: #258ecd;
+}
+.cbp-spmenu a:active {
+background: #afdefa;
+color: #47a3da;
+}
+.cbp-spmenu-left {
+left: -240px;
+}
+.cbp-spmenu-left.cbp-spmenu-open {
+
+left: 0px;
+}
+.cbp-spmenu, .cbp-spmenu-push {
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+.cbp-spmenu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+.cbp-spmenu-push-toright {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  left: 10%;
+  width: 89% !important;
+  position: relative;
+  
+}
+
+.cbp-spmenu-push-toleft {
+  left: -240px;
+}
