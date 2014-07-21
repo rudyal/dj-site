@@ -26,6 +26,12 @@ var wclass = "w";
   // Make a second getJSON method that takes array, 
   // the array is a list of categories.
 
+// X - Make Category Checkbox
+// X - Make jQuery listner for checkbox
+// X - Make Ajax call to apporpriate URL.py
+// Return Data from ajax call
+// Figure how to use data to populate main content area
+
 function getJSON() {
 $.getJSON('/api/v1/pic/?format=json', function(data) {
         var output="<ul>";
@@ -46,13 +52,6 @@ function getItemElement2(count) {
   $.getJSON('/api/v1/pic/?format=json', function(data) {
         var elem = document.createElement('img');
         var picsrc = data.objects[count].picture;
-
-          // My way
-          // Get image dimensions from 
-          // Test if image is appropriate for position
-          // OR give appropriate css tag
-          // OR give inline styling tag
-          
           
           var w1class = getWclass();
           elem.className = 'item ' + w1class;
@@ -161,10 +160,34 @@ window.onload = function(){
       }
     };
 
+docReady( function() {
+  land = document.getElementById( 'land' );
+  land.onclick = function() {
+        //alert("Hello");
+        //Call Json Function
+        getAjax('star');
+      };
+});
 
+var tag = 0;
 
-
-
+function getAjax(tag){
+  //alert(tag);
+  if(tag=='land'){
+    tag = 1;
+  }else if(tag=='star'){
+    tag = 2;
+  }
+  //$.getJSON('/api/v1/pic/?tags=1&format=json', {
+  $.getJSON('/api/v1/pic/?', {
+    'tags' : tag,
+    'format' : 'json',
+  }, function(data) {
+        // We have filtered JSON objects
+        console.log(data);
+        // We just need to populate main content with data
+ });
+}
 //window.onload = function(){ 
 var transitionProp = getStyleProperty('transition');
 var transitionEndEvent = {
