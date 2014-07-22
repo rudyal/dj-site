@@ -1,53 +1,120 @@
 
 // TODO: 
-// http://themes.themeton.com/mana/blog/masonry-layout-left-sidebar/
-//  2. Iron out formating
-       // Need to load on break, then ensure smooth scrolling
-       // Need to make pictures various sizes. w=width and h=height
-//  2.5 make sidebar that doesnt move, has checkboxes and such
-  // side bar and main are 2 seperate divs, their max widths should complement each other
-  // have little fixed icon on screen when scrolling down
+
 //  3. Insert Breakpoints
 //  4. Build wireframe Mockup of Final - Add sidebar with tagging/categories
 //          categories: current events, trends, color, length, etc
 //  5. Build Illustrator Mockup
 
-//$(document).ready(addItem);
-//$(document).ready(getJSON);
 var globalCount = 0;
 var wclass = "w";
-
-/*  
- *  This Function grabs JSON from URL and parses it,
- *    then inserts into HTML
-*/
-
-// How to do categories and filtering?
-  // Make a second getJSON method that takes array, 
-  // the array is a list of categories.
 
 // X - Make Category Checkbox
 // X - Make jQuery listner for checkbox
 // X - Make Ajax call to apporpriate URL.py
 // Return Data from ajax call
 // Figure how to use data to populate main content area
+// Streamline categories - ensure multiple categories will work
 
-function getJSON() {
-$.getJSON('/api/v1/pic/?format=json', function(data) {
-        var output="<ul>";
-        for (var i in data.objects) {
-          //var pic = JSON.stringify();
-          output+="<li>" + data.objects[i].date 
-          + " " + "<img src=\"" + data.objects[i].picture + "\"height=\"42\" width=\"42\">"
-          + "--" + data.objects[i].gender+"</li>";
+// Make a switch statement to check what categories are check,
+  // Then Call the appropiate functions or pass appropiate data
+
+// Also When a category is clicked make sure that all items are removed and new ones inserted
+
+// Fill landing page with content
+docReady( function() {
+      loadMore();
+      loadMore();
+      loadMore();
+});
+
+// CATEGORIES
+// ONclick of categories - gets getajax
+var someObj={};
+someObj.catGranted=[];
+someObj.catDenied=[];
+
+
+
+docReady( function() {
+  $("input:checkbox").change(function() {
+    var someObj = {};
+    someObj.catGranted = [];
+    someObj.catDenied = [];
+
+    $("input:checkbox").each(function() {
+        if ($(this).is(":checked")) {
+            someObj.catGranted.push($(this).attr("id"));
+        } else {
+            someObj.catDenied.push($(this).attr("id"));
         }
-        output+="</ul>";
-        //output=JSON.stringify(data.objects);
-        document.getElementById("placeholder").innerHTML=output;
+    });
+    //Take Out current items
+      $( ".item" ).remove();
+      // Take to top of page
+      $('html, body').animate({ scrollTop: 0 }, 0);
+    //Fill with filtered items
+      getAjax(someObj.catGranted);
+    //alert("GRANTED: " + someObj.catGranted);
+    //alert("DENIED: " + someObj.catDenied);
+  });
 
+});
+
+var tag = "1";
+
+// Gets json of categories
+function getAjax(someOb){
+  //Now we have an array of the categories!
+  console.log("HERE -------------------   ---------------");
+  
+  someOb = [1,2];
+  console.log(someOb);
+  //Now we just need to parse the tags, assign variables, and put in get json method
+  console.log({someOb:someOb});
+  $.getJSON('/api/v1/pic/?', {
+    'tags' : 2,
+    //'tags' : {someOb:someOb},
+    'tags' : 1,
+    'format' : 'json',
+  }, function(data) {
+        // We have filtered JSON objects
+        console.log(data);
+        // We just need to populate main content with data
  });
+
 }
 
+
+//ON SCROLL
+//On scroll at bottom of page, load more content, check categories here?
+//Calls loadMore()
+$(window).scroll(bindScroll);
+function bindScroll(){
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       $(window).unbind('scroll');
+       loadMore();
+   }
+}
+
+// Calls getItemElement2
+function loadMore()
+{
+   console.log("More loaded");
+
+   console.log(globalCount);
+
+   // TODO Check if category is checked
+   for ( var i = 1; i < 10; i++ ) {
+      getItemElement2(globalCount);
+      globalCount += 1;
+      console.log(globalCount);
+    }
+    $("body").append("<div>");
+   $(window).bind('scroll', bindScroll);
+ }
+
+// Calls addItem, passes elements
 function getItemElement2(count) {
   $.getJSON('/api/v1/pic/?format=json', function(data) {
         var elem = document.createElement('img');
@@ -62,36 +129,17 @@ function getItemElement2(count) {
  });
 }
 
+// Adds elements to container
 function addItem(elem){
-	var container = document.querySelector('.masonry');
-	  var elems = [];
+  var container = document.querySelector('.masonry');
+    var elems = [];
     var fragment = document.createDocumentFragment();
     fragment.appendChild( elem );
     elems.push( elem );
     container.appendChild( fragment );
 }
 
-function loadMore()
-{
-   console.log("More loaded");
-
-   console.log(globalCount);
-   for ( var i = 1; i < 10; i++ ) {
-      getItemElement2(globalCount);
-      globalCount += 1;
-      console.log(globalCount);
-    }
-    $("body").append("<div>");
-   $(window).bind('scroll', bindScroll);
- }
-
-function bindScroll(){
-   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-       $(window).unbind('scroll');
-       loadMore();
-   }
-}
-
+// Assigns w class for .items - gives width and height
 function getWclass(){
    if(wclass=="w" || wclass=="w7a"){
             wclass = "w1a";
@@ -119,28 +167,15 @@ function getWclass(){
           }
 }
 
-$(function() {
-
-  $('#mobilebars').click(function(){
-    alert('hello ladie');
-  });
-
-});
-
+// Makes filter button fixed
 $(window).scroll(function(){
-
   var navPos = $('.sidebar').position().top+$('.sidebar').outerHeight(true);
   var fixIT = $(this).scrollTop() >= navPos;
   var setPos = fixIT ? 'fixed' : 'relative' ;
-
   $('.sidebar').css({position: setPos});
-
 }); 
 
-$(window).scroll(bindScroll);
-
-
-
+// Toggle left menu
 window.onload = function(){ 
       var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
       body = document.body,
@@ -160,34 +195,9 @@ window.onload = function(){
       }
     };
 
-docReady( function() {
-  land = document.getElementById( 'land' );
-  land.onclick = function() {
-        //alert("Hello");
-        //Call Json Function
-        getAjax('star');
-      };
-});
 
-var tag = 0;
 
-function getAjax(tag){
-  //alert(tag);
-  if(tag=='land'){
-    tag = 1;
-  }else if(tag=='star'){
-    tag = 2;
-  }
-  //$.getJSON('/api/v1/pic/?tags=1&format=json', {
-  $.getJSON('/api/v1/pic/?', {
-    'tags' : tag,
-    'format' : 'json',
-  }, function(data) {
-        // We have filtered JSON objects
-        console.log(data);
-        // We just need to populate main content with data
- });
-}
+//Not really sure, used for mason width scale
 //window.onload = function(){ 
 var transitionProp = getStyleProperty('transition');
 var transitionEndEvent = {
@@ -197,6 +207,8 @@ var transitionEndEvent = {
   transition: 'transitionend'
 }[ transitionProp ];
 
+
+//Masonry stuff, makes width scale with page, i think
 docReady( function() {
 
   var container = document.querySelector('.masonry');

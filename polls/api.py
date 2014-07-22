@@ -20,6 +20,8 @@ class TagResource(ModelResource):
         resource_name = 'tag'
         filtering = dict(
             resource_uri = ALL,
+            slug = ALL,
+            tags = ALL,
         )
 
 class PicResource(ModelResource):
@@ -29,8 +31,41 @@ class PicResource(ModelResource):
     class Meta:
         queryset = PictureObject.objects.all()
         filtering = dict(
-            tags = ALL_WITH_RELATIONS,
+            tags = ALL,
             gender = ALL,
+            tags1 = ALL,
         )
         resource_name = 'pic'
         limit = 0
+
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+
+        orm_filters = super(PicResource, self).build_filters(filters)
+
+        if "land" in filters:
+            #sqs = SearchQuerySet().auto_query(filters['q'])
+            orm_filters["tags1__in"] = ['land']
+            #orm_filters["pk__in"] = [i.pk for i in sqs]
+        if "art" in filters:
+        	orm_filters["tags1__in"] = ['art']
+
+        return orm_filters
+
+    # def apply_filters(self, request, applicable_filters):
+    #     base_object_list = super(PicResource, self).apply_filters(request, applicable_filters)
+    #     query = request.GET.get('query', None)
+    #     ids = request.GET.get('ids', None)
+    #     filters = {}
+    #     if ids:
+    #         ids = ids.replace('+', ' ').split(' ')
+    #         filters.update(dict(id__in=ids))
+    #     if query:
+    #         qset = (
+    #             Q(tags1__in='art', **filters)
+    #             # |
+    #             # Q(description__icontains=query, **filters)
+    #         )
+    #         base_object_list = base_object_list.filter(qset).distinct()
+    #     return base_object_list.filter(**filters).distinct()
