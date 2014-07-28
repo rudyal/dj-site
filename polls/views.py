@@ -1,12 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.models import User, Group
 from polls.models import Choice, Poll, PictureObject
 from polls.forms import PictureObjectForm
+from polls.serializers import UserSerializer, GroupSerializer, PictureSerializer
+from rest_framework import viewsets
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.views import generic
 from django.core.context_processors import csrf
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
 
 class IndexView(generic.ListView):
 	template_name = 'polls/index.html'
@@ -76,3 +82,25 @@ def Viewer(request):
         # Put href in pics on front page
 
         return render(request, 'polls/demo2.html', pic_data)
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+class PicViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = PictureObject.objects.all()
+    serializer_class = PictureSerializer

@@ -24,8 +24,8 @@ var wclass = "w";
 // Fill landing page with content
 docReady( function() {
       loadMore();
-      loadMore();
-      loadMore();
+      //loadMore();
+      //loadMore();
 });
 
 // CATEGORIES
@@ -105,27 +105,39 @@ function loadMore()
    console.log(globalCount);
 
    // TODO Check if category is checked
-   for ( var i = 1; i < 10; i++ ) {
+   //for ( var i = 1; i < 10; i++ ) {
       getItemElement2(globalCount);
-      globalCount += 1;
-      console.log(globalCount);
-    }
+    //  globalCount += 1;
+    //  console.log(globalCount);
+    //}
     $("body").append("<div>");
    $(window).bind('scroll', bindScroll);
  }
 
 // Calls addItem, passes elements
 function getItemElement2(count) {
-  $.getJSON('/api/v1/pic/?format=json', function(data) {
-        var elem = document.createElement('img');
-        var picsrc = data.objects[count].picture;
-          
-          var w1class = getWclass();
-          elem.className = 'item ' + w1class;
+  $.getJSON('/api/pic/?format=json', function(data) {
+    console.log(data);
+    var picsrc;
+    jQuery.each(data, function(k,v) {
+      //$("#" + this).text("key " + k + " val " + v + ".");
+      console.log(k + " drhrfgh " + v);
+      console.log(v.picture);
+                  picsrc = v.picture
+                  var elem = document.createElement('img');
+                  //var picsrc = data.count.picture;
+                  console.log(picsrc);
+                    
+                    var w1class = getWclass();
+                    elem.className = 'item ' + w1class;
 
-          elem.setAttribute("src", picsrc);
-          console.log(elem);
-          addItem(elem);
+                    elem.setAttribute("src", picsrc);
+                    console.log(elem);
+                    addItem(elem);
+
+    });
+    
+        
  });
 }
 
